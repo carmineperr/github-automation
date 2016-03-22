@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.LoadableComponent;
 
 /**
  * This class models the login page of gitHub.
- * Mi ha aiutato Antonio
  * @author Carmine
  *
  */
