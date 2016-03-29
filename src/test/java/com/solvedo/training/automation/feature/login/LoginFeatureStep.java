@@ -2,10 +2,12 @@ package com.solvedo.training.automation.feature.login;
 
 import static org.junit.Assert.assertEquals;
 
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.solvedo.training.github.automation.pageobject.LoginPage;
 import com.solvedo.training.github.automation.pageobject.MainPage;
@@ -23,9 +25,13 @@ public class LoginFeatureStep {
 	private LoginPage loginPage;
 	
 	@Before
-	public void setup(){
-		driver = new FirefoxDriver();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	public void setup() throws Exception{
+		//driver = new FirefoxDriver();
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		DesiredCapabilities capabilities = new DesiredCapabilities().phantomjs();
+		
+		driver = new RemoteWebDriver(new URL("http://127.0.0.1:7963"), capabilities);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 		
 	@Given("^I am in the application main page$")
@@ -39,7 +45,7 @@ public class LoginFeatureStep {
 	}
 	
 	@When("I login in the application using wrong credentials")
-	public void i_login_with_user_user_and_password(String user, String password) throws Throwable {
+	public void i_login_with_user_user_and_password() throws Throwable {
 	    loginPage.login();
 	}
 

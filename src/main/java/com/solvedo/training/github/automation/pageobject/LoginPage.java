@@ -14,6 +14,8 @@ import org.openqa.selenium.support.ui.LoadableComponent;
  *
  */
 public class LoginPage extends LoadableComponent<LoginPage>{
+	
+	
 		
 	private WebDriver driver;
 	@FindBy(id="login_field")
