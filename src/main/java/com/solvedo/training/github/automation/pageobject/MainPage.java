@@ -27,14 +27,14 @@ public class MainPage extends LoadableComponent<MainPage>{
 	@Override
 	protected void load() {
 		driver.get("https://github.com");
-		System.out.println("Thread sleep ");
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println("SOURCE:" + driver.getPageSource());
+//		System.out.println("Thread sleep ");
+//		try {
+//			Thread.sleep(5000);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		//System.out.println("SOURCE:" + driver.getPageSource());
 		PageFactory.initElements(driver, this);
 	}
 

@@ -2,13 +2,14 @@ package com.solvedo.training.automation.feature.login;
 
 import static org.junit.Assert.assertEquals;
 
-import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
+import com.machinepublishers.jbrowserdriver.JBrowserDriver;
+import com.machinepublishers.jbrowserdriver.Settings;
+import com.machinepublishers.jbrowserdriver.Timezone;
 import com.solvedo.training.github.automation.pageobject.LoginPage;
 import com.solvedo.training.github.automation.pageobject.MainPage;
 
@@ -27,11 +28,12 @@ public class LoginFeatureStep {
 	@Before
 	public void setup() throws Exception{
 		//driver = new FirefoxDriver();
-		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		DesiredCapabilities capabilities = new DesiredCapabilities().phantomjs();
+		driver = new JBrowserDriver(Settings.builder().
+			      timezone(Timezone.EUROPE_ROME).build());
+		JBrowserDriver driver = new JBrowserDriver();
 		
-		driver = new RemoteWebDriver(new URL("http://127.0.0.1:7963"), capabilities);
-		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver = new RemoteWebDriver(new URL("http://127.0.0.1:7963"), capabilities);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 		
 	@Given("^I am in the application main page$")
